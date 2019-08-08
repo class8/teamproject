@@ -5,48 +5,30 @@
 
 	<!-- 관리자 페이지 추가 -->
 	<sql id="boardCommon">
-
 		SELECT b_num, b_name, b_title, b_date
 		FROM spring_board
-
 		<where>
-
 			<if test="search == 'b_title'">
    <![CDATA[b_title LIKE '%' || #{keyword} || '%']]>
 			</if>
-
 			<if test="search == 'b_content'">
    <![CDATA[b_content LIKE '%' || #{keyword} || '%']]>
 			</if>
-
 			<if test="search == 'b_name'">
    <![CDATA[b_name LIKE '%' || #{keyword} || '%']]>
 			</if>
-
 			<if test="search == 'b_date'">
    <![CDATA[to_char(b_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
 			</if>
-
-		</where>
-
-	</sql>
-
-
-	<sql id="boardCommon">
-		SELECT b_num, b_name, b_title, b_date
-		FROM spring_board
-		<where>
-			<if test="search=='b_title'">
-            <![CDATA[ b_title LIKE '%'||#{keyword} || '%']]>
-			</if>
-			<if test="search=='b_content'">
-            <![CDATA[ b_content LIKE '%'||#{keyword} || '%']]>
-			</if>
-			<if test="search=='b_name'">
-            <![CDATA[ b_name LIKE '%'||#{keyword} || '%']]>
-			</if>
 		</where>
 	</sql>
+
+<!-- 이거 왜 있음? -->
+	<!-- <sql id="boardCommon"> SELECT b_num, b_name, b_title, b_date FROM spring_board 
+		<where> <if test="search=='b_title'"> <![CDATA[ b_title LIKE '%'||#{keyword} 
+		|| '%']]> </if> <if test="search=='b_content'"> <![CDATA[ b_content LIKE 
+		'%'||#{keyword} || '%']]> </if> <if test="search=='b_name'"> <![CDATA[ b_name 
+		LIKE '%'||#{keyword} || '%']]> </if> </where> </sql> -->
 
 	<!-- 게시물 기본 조회 -->
 	<!-- <select id="boardList" resultType="board"> SELECT b_num,b_name,b_title, 
@@ -57,7 +39,7 @@
 	<select id="boardList" parameterType="board" resultType="board">
 		<!-- Board - boardList -->
 		SELECT b_num, b_name, b_title,
-		TO_CHAR(b_date, 'YYY-MM-DD HH24:MI:SS')
+		TO_CHAR(b_date, 'YYYY-MM-DD HH24:MI:SS')
 		AS b_date
 		FROM
 		(SELECT list.*, ROWNUM AS RNUM FROM (
