@@ -2,23 +2,28 @@ package com.spring.common.vo;
 
 public class CommonVO {
 
-	private String page; // 페이지번호
-	private String pageSize; // 페이지에 보여주는 줄 수
+	private String page; // 페이지 번호
+	private String pageSize; // 페이지에 보여주는 줄의 수
 	private String start_row; // 시작 레코드 번호
-	private String end_row; // 종료 레코드 번호
+	private String end_row;// 종료 레코드 번호
 
-	// 조건 검색시 사용할 필드
+	// 조건 검색시 사용하는 필드입니다
 	private String search = "";
 	private String keyword = "";
 
-	// 제목 클릭시 정렬을 위한 필드
+	// 날자 검색시 사용하는 필드입니다
+	private String start_date = "";
+	private String end_date = "";
+
+	// 제목 클릭 시 정렬을 위한 필드
 	private String order_by;
 	private String order_sc;
 
 	// 클라이언트에게 코드나 결과 내용을 위한 필드
-	private String result_cs;
+	private String result_cd;
 	private String result_msg;
 
+	// 접근자와 설정자
 	public String getPage() {
 		return page;
 	}
@@ -67,6 +72,22 @@ public class CommonVO {
 		this.keyword = keyword;
 	}
 
+	public String getStart_date() {
+		return start_date;
+	}
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+
 	public String getOrder_by() {
 		return order_by;
 	}
@@ -83,12 +104,12 @@ public class CommonVO {
 		this.order_sc = order_sc;
 	}
 
-	public String getResult_cs() {
-		return result_cs;
+	public String getResult_cd() {
+		return result_cd;
 	}
 
-	public void setResult_cs(String result_cs) {
-		this.result_cs = result_cs;
+	public void setResult_cd(String result_cd) {
+		this.result_cd = result_cd;
 	}
 
 	public String getResult_msg() {
