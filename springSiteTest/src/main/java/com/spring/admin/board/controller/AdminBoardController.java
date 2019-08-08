@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 @RequestMapping(value = "/admin") // 실제 주소 값
 public class AdminBoardController {
 
-	private Logger log = LoggerFactory.getLogger(AdminBoardController.class)
+	private Logger log = LoggerFactory.getLogger(AdminBoardController.class);
 
 	@Autowired
 	private  AdminBoardService adminBoardService;
