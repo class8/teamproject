@@ -61,8 +61,7 @@
 	<!-- 메서드 처리 -->
 	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter
-		</filter-class>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
