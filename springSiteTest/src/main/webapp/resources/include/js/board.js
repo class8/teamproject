@@ -102,4 +102,3 @@ function goPage(page) {
 	$("#f_search").submit();
 
 }
-$("#search").val(search);
