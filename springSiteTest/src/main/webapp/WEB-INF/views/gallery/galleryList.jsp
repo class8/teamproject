@@ -87,7 +87,7 @@
 		$.getJSON(
 				"/gallery/galleryData.do",
 				function(data) {
-					console.log(dta.length);
+					console.log(data.length);
 					$(data).each(
 							function(index) {
 								var g_name = this.g_name;
