@@ -28,7 +28,7 @@
 	<select id="boardList" parameterType="board" resultType="board">
 		<!-- Board - boardList -->
 		SELECT b_num, b_name, b_title,
-		TO_CHAR(b_date, 'YYY-MM-DD HH24:MI:SS') AS b_date
+		TO_CHAR(b_date, 'YYYY-MM-DD HH24:MI:SS') AS b_date
 		FROM
 		(SELECT list.*, ROWNUM AS RNUM
 		FROM (
