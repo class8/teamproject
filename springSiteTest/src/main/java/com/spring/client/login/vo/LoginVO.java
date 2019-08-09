@@ -51,7 +51,7 @@ public class LoginVO extends LoginHistory{
 	public String toString() {
 		return "LoginVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", getIdx()=" + getIdx()
 				+ ", getRetry()=" + getRetry() + ", getLastFailedLogin()=" + getLastFailedLogin()
-				+ ", getLastSuccessedLogin()=" + getLastSuccessedLogin() + ", getClientIp()=" + getClientIp() + "]";
+				+ ", getLastSuccessedLogin()=" + getLastSuccessedLogin() + ", getclientIP()=" + clientIP() + "]";
 	}
 
 
