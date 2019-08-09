@@ -87,3 +87,21 @@ function chkFile(item) {
 		return true;
 	}
 }
+
+// 관리자 페이지에서 추가되는 소스
+
+// 함수 명 : getDateFormat (날자 데이터)
+// 설명 : dataValue의 값을 년-월-일 형식에 맞춰서 반환합니다
+function getDateFormat(dataValue) {
+
+	var year = dateValue.getFullYear();
+
+	var month = dateValue.getMonth + 1;
+	month = (month < 10) ? "0" + month : month;
+
+	var day = dateValue.getDate();
+	day = (day < 10) ? "0" + day : day;
+
+	var result = year + "-" + month + "-" + day;
+	return result;
+}
