@@ -20,7 +20,7 @@ $(function() {
 		$(this).parents(".form-group").find(".error").html(message[idx]);
 	});
 	// 확인 버튼 클릭시 처리 이벤트
-	$("#modify").cilck(
+	$("#modify").click(
 			function() {
 				// 입력값 체크
 				if (!formCheck($('#oldUserPw'), $('.error:eq(0)'), "기존 비밀번호를"))
@@ -61,7 +61,7 @@ $(function() {
 				}
 			});
 
-	$("modifyReset").click(function() {
+	$("#modifyReset").click(function() {
 		$("#memberForm").each(function() {
 			this.reset();
 
