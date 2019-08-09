@@ -1,6 +1,5 @@
 package com.spring.common.file;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

@@ -1,7 +1,5 @@
 package com.spring.client.board.dao;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.client.board.vo.BoardVO;
 
 @Repository
-public class BoardDaoImple implements BoardDao {
+public class BoardDaoImpl implements BoardDao {
 
 	@Autowired
 	private SqlSession session;
@@ -20,6 +18,12 @@ public class BoardDaoImple implements BoardDao {
 	@Override
 	public List<BoardVO> boardList(BoardVO bvo) {
 		return session.selectList("boardList", bvo);
+	}
+
+	// 전체 레코드 건수 구현
+	@Override
+	public int boardListCnt(BoardVO bvo) {
+		return (Integer) session.selectOne("boardListCnt");
 	}
 
 	// 글 입력 구현
@@ -50,12 +54,6 @@ public class BoardDaoImple implements BoardDao {
 	@Override
 	public int boardDelete(int b_num) {
 		return session.delete("boardDelete", b_num);
-	}
-
-	// 전체 레코드 건수 구현
-	@Override
-	public int boardListCnt(BoardVO bvo) {
-		return (Integer) session.selectOne("boardListCnt");
 	}
 
 }

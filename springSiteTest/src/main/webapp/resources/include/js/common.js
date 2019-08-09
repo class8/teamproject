@@ -20,6 +20,19 @@ function inputVerify(index, data, printarea) {
 	}
 }
 
+/*
+ * 배열내의 값을 찾아서 인덱스를 반환 (요소가 없을 경우 - 1반환) jQuery.inAraay(찾을 값, 검색 대상의 배열)
+ */
+function chkFile(item) {
+	var ext = item.val().split('.').pop().toLowerCase();
+	if (jQuery.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+		alert('gif,png,jpg,jpeg 파일만 업로드 할 수 있습니다.');
+		return false;
+	} else {
+		return true;
+	}
+}
+
 // 함수명: chkSubmit(유효성 체크 대상, 메시지 내용)
 // 출력영역: alert로 출력!
 // 예시: if(!chkSubmit($('#keyword'),"검색어를" return;
@@ -69,19 +82,6 @@ function chkData(item, msg) {
 		alert(msg + " 입력해 주세요.");
 		$(item).val("");
 		$(item).focus();
-		return false;
-	} else {
-		return true;
-	}
-}
-
-function chkFile(item) {
-	/*
-	 * 배열내의 값을 찾아서 인덱스를 반환(요소가 없을 경우-1 반환) jQuery.inArray(찾을 값, 검색 대상의 배열)
-	 */
-	var ext = item.val().split('.').pop().toLowerCase();
-	if (jQuery.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-		alert('gif, png, jpg, jpeg 파일만 업로드를 할 수 있습니다.');
 		return false;
 	} else {
 		return true;

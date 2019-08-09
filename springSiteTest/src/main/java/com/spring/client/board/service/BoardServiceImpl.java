@@ -1,37 +1,47 @@
 package com.spring.client.board.service;
 
 import java.util.List;
-
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.client.board.dao.BoardDao;
 import com.spring.client.board.vo.BoardVO;
+import com.spring.client.reply.dao.ReplyDao;
+import com.spring.client.reply.vo.ReplyVO;
 
-import lombok.extern.java.Log;
-
-@Log
 @Service
 @Transactional
 public class BoardServiceImpl implements BoardService {
+	private Logger log = LoggerFactory.getLogger(BoardServiceImpl.class);
 
 	@Autowired
 	private BoardDao boardDao;
+
+	@Autowired
+	private ReplyDao replyDao;
 
 	// 글 목록 구현
 	@Override
 	public List<BoardVO> boardList(BoardVO bvo) {
 		List<BoardVO> myList = null;
-
 		// 정렬에 대한 기본값 설정
-		if (bvo.getOrder_by() == null)
+		if (bvo.getOrder_by() == null) {
 			bvo.setOrder_by("b_num");
-		if (bvo.getOrder_sc() == null)
+		}
+		if (bvo.getOrder_sc() == null) {
 			bvo.setOrder_sc("DESC");
-
+		}
 		myList = boardDao.boardList(bvo);
 		return myList;
+	}
+
+	// 전체 레코드 수 구현
+	@Override
+	public int boardListCnt(BoardVO bvo) {
+		return boardDao.boardListCnt(bvo);
 	}
 
 	// 글 입력 구현
@@ -81,26 +91,38 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 글 삭제 구현
+	// 해당 게시물에 댓글이 존재하면 댓글 삭제 후 게시물 삭제
 	@Override
 	public int boardDelete(int b_num) {
 
 		int result = 0;
 
 		try {
+			List<ReplyVO> list = replyDao.replyList(b_num);
+			if (!list.isEmpty()) {
+				result = replyDao.replyChoiceDelete(b_num);
+			}
 			result = boardDao.boardDelete(b_num);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
 		}
-
 		return result;
-
 	}
 
-	// 전체 레코드 수 구현
+	/*
+	 * 해당 게시물의 댓글 존재 여부 확인 댓글이 존재하면 댓글수를 반환하고 존재하지 않으면 0을 반환
+	 */
 	@Override
-	public int boardListCnt(BoardVO bvo) {
-		return boardDao.boardListCnt(bvo);
+	public int replyCnt(int b_num) {// 댓글의 개수 구하기
+		int result = 0;
+		List<ReplyVO> list = replyDao.replyList(b_num);
+		if (!list.isEmpty()) {
+			result = list.size();
+		} else {
+			result = 0;
+		}
+		return result;
 	}
 
 }
