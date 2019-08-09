@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>관리자 페이지 게시판관리</title>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/board.js"></script>
 <script type="text/javascript">
 	search = "<c:out value='${data.search}' />";

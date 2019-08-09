@@ -92,7 +92,7 @@ function chkFile(item) {
 
 // 함수 명 : getDateFormat (날자 데이터)
 // 설명 : dataValue의 값을 년-월-일 형식에 맞춰서 반환합니다
-function getDateFormat(dataValue) {
+function getDateFormat(dateValue) {
 
 	var year = dateValue.getFullYear();
 
