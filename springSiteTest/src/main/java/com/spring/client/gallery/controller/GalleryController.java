@@ -39,7 +39,7 @@ public class GalleryController {
 	 *********************/
 
 	@ResponseBody
-	@RequestMapping(value = "/galleryData")
+	@RequestMapping(value = "/galleryData", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
 	public String galleryData(ObjectMapper mapper) {
 		log.info("galleryData 호출 성공");
 		String listData = "";
